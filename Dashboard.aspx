@@ -3,7 +3,6 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="maincontent" runat="server">
@@ -22,7 +21,6 @@
                         <i class="fa fa-search" style="color:#000000; font: bold; font-size:25px; padding: 25%;"></i></span>
                 </div>
             </div>
-
          </div>
 </asp:Content>
  
