@@ -136,6 +136,7 @@
       <DependentUpon>PatientDB.mdf</DependentUpon>
     </Content>
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\DP_1.png" />
     <Content Include="assets\img\Health System Background.jpg" />
     <Content Include="assets\img\about.jpg" />
     <Content Include="assets\img\apple-touch-icon.png" />
@@ -230,6 +231,7 @@
     <Content Include="assets\vendor\remixicon\remixicon.symbol.svg" />
     <Content Include="assets\vendor\swiper\swiper-bundle.min.css" />
     <Content Include="assets\vendor\swiper\swiper-bundle.min.js" />
+    <Content Include="Features\BookAppointment.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -238,7 +240,7 @@
     <Content Include="Content\bootstrap4.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
-    <Content Include="CSS\Style1.css" />
+    <Content Include="CSS\Dashboard.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -348,6 +350,13 @@
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Features\BookAppointment.aspx.designer.vb">
+      <DependentUpon>BookAppointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Features\BookAppointment.aspx.vb">
+      <DependentUpon>BookAppointment.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Contact.aspx.designer.vb">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
@@ -360,7 +369,7 @@
     </Compile>
     <Compile Include="Dashboard.aspx.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
