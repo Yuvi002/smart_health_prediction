@@ -61,3 +61,9 @@ li a:hover {
     border: double;
     border-color: burlywood;
 }
+
+#Welcoming {
+    color: black;
+    padding: 5%;
+    margin-left: 15%;
+}
