@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="maincontent" runat="server">
-
     <div class="container">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server"
             HeaderText="Errors in this form are listed below"

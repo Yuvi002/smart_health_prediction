@@ -231,7 +231,6 @@
     <Content Include="assets\vendor\remixicon\remixicon.symbol.svg" />
     <Content Include="assets\vendor\swiper\swiper-bundle.min.css" />
     <Content Include="assets\vendor\swiper\swiper-bundle.min.js" />
-    <Content Include="Features\BookAppointment.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -348,13 +347,6 @@
     </Compile>
     <Compile Include="About.aspx.vb">
       <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="Features\BookAppointment.aspx.designer.vb">
-      <DependentUpon>BookAppointment.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Features\BookAppointment.aspx.vb">
-      <DependentUpon>BookAppointment.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Contact.aspx.designer.vb">
