@@ -20,7 +20,6 @@
             </fieldset>
             <fieldset>
                 <asp:Label ID="lblmsg" runat="server" Text=""></asp:Label><br />
-              
                 <asp:Button ID="btnRegister" runat="server"
                     PostBackUrl="~/PatientRegistration.aspx" Text="Don’t have an account yet? Join now"
                     CausesValidation="false" CssClass="btn btn-outline-warning" /><br />
