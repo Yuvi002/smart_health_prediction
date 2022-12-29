@@ -14,13 +14,13 @@
                     <user:login ID="userLogin" runat="server" />
                     <br />
                     <br />
+                    <br />
                     <asp:Button ID="btnLogin" runat="server"
                         CssClass="btn btn-outline-primary" Text="Log in" />
                 </div>
             </fieldset>
             <fieldset>
                 <asp:Label ID="lblmsg" runat="server" Text=""></asp:Label><br />
-              
                 <asp:Button ID="btnRegister" runat="server"
                     PostBackUrl="~/PatientRegistration.aspx" Text="Don’t have an account yet? Join now"
                     CausesValidation="false" CssClass="btn btn-outline-warning" /><br />
