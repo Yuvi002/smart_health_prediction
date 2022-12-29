@@ -24,6 +24,7 @@ Public Class PatientRegistration
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        txtFname.Focus()
         If Not Page.IsPostBack Then
 
         End If
