@@ -22,22 +22,23 @@
          </div>
 
                      <%--SearchBar for Symptoms--%>
-                 <d iv class="col-sm-6" style="float:right; align-items: center; padding-top:7%;" >
+                 <div class="col-sm-6" style="float:right; align-items: center; padding-top:7%;" >
              <div class="input-group">
                  <asp:TextBox ID="TextBox1" OnTextChanged="TextBox1_TextChanged"  runat="server"  AutoPostBack="true"
                         CssClass="form-control" style="background:transparent; border:groove; border-radius: 60px; height: 8vh; background: rgba(255,255,255, 0.3); display:flex; align-items: center; " Placeholder="Search your symptom..." />
                  <span class="input-group-addon"><i style="font-size:2em; padding-left:1em; margin-top:8px" class="fa fa-search" ></i></span>
                  <hr />
-                 <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnRowDataBound="gvCustomers_RowDataBound1" OnPreRender="gvCustomers_PreRender" ClientIDMode="Static" OnPageIndexChanging="gvCustomers_PageIndexChanging" >
+                 <asp:GridView ID="gvCustomers"  runat="server" style="border-color:black" class="border border-5"   AutoGenerateColumns="false" AllowPaging="true" OnRowDataBound="gvCustomers_RowDataBound1" OnPreRender="gvCustomers_PreRender" ClientIDMode="Static" OnPageIndexChanging="gvCustomers_PageIndexChanging" >
                      <Columns>
+                         
                          <asp:BoundField HeaderStyle-Width="200px" DataField="Info_Name" HeaderText="Symptom Name" ItemStyle-CssClass="Symtoms Name" />
-                         <asp:BoundField HeaderStyle-Width="200px" DataField="Info_Spec" HeaderText="Symptom Specification" ItemStyle-CssClass="Symptom Specification" />
-                         <asp:ButtonField Text="Book Appointment" HeaderText="Book Your Appointment Today" ItemStyle-CssClass="btn btn-outline-success" />
-
+                         <asp:BoundField HeaderStyle-Width="300px" DataField="Info_Spec" HeaderText="Symptom Specification" ItemStyle-CssClass="Symptom Specification" />
+                         <asp:ButtonField Text="Book Appointment" HeaderStyle-Width="200px" HeaderText="Book Your Appointment Today" ItemStyle-CssClass="btn btn-outline-success" />
+                             
                      </Columns>
                  </asp:GridView>
              </div>
-        </d>
+        </div>
                  </div>
              </div> 
 
