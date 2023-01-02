@@ -59,12 +59,12 @@ Public Class Dashboard
         If (Not IsNothing(TextBox1.Text.Trim())) Then
             sqlParam = "Select Info_Name, Info_Spec, Cat_ID FROM tblInformation "
         End If
-        'If (Cat_ID <> "-1") Then
-        '    sqlParamCat = "tblInformation.Cat_ID = @Cat_ID"
-        'End If
+        If (Cat_ID <> "-1") Then
+            sqlParamCat = "select * tblInformation.Cat_ID = @Cat_ID"
+        End If
         cmd.CommandText = "Select Info_ID, Info_Name, Info_Spec, Cat_ID FROM tblInformation WHERE Info_Name LIKE '%' + @infoname + '%' " + sqlParam
         cmd.Parameters.AddWithValue("@infoname", TextBox1.Text.Trim())
-        'cmd.Parameters.AddWithValue("@Cat_ID", Cat_ID)
+        cmd.Parameters.AddWithValue("@Cat_ID", Cat_ID)
         Dim dt As New DataTable()
         Dim da As New SqlDataAdapter(cmd)
         da.Fill(dt)

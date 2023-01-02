@@ -41,6 +41,51 @@ Partial Public Class E_Health_System
     Protected WithEvents pnllog As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
+    '''regist control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents regist As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''dropdown06 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dropdown06 As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''LgRegis control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LgRegis As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''lbllgged control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lbllgged As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''btnlgOut control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnlgOut As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''maincontent control.
     '''</summary>
     '''<remarks>

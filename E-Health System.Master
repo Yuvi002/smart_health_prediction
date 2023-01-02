@@ -1,11 +1,10 @@
 ﻿<%@ master language="VB" autoeventwireup="false" codebehind="E-Health System.master.vb" inherits="smart_health_prediction.E_Health_System" %>
-
 <%@ register tagprefix="user" tagname="login" src="~/LoginCrel.ascx" %>
 <!DOCTYPE html>
 
 <!--
     +Try to implement the single sign on function
-    +To implment the search function whethere from AI or from a database
+    +To implment the search function whether from AI or from a database
     -->
 
 <html>
@@ -18,6 +17,7 @@
     </asp:PlaceHolder>
 
     <style>
+
         .modal-header, h4, .close {
             background-color: #5cb85c;
             color: white !important;
@@ -54,7 +54,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager runat="server">
+            <asp:ScriptManager runat="server">
             <scripts>
                 <%--To learn more about bundling scripts in ScriptManager
 see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -82,38 +82,28 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
         </asp:ScriptManager>
 
         <header id="header" class="fixed-top">
-            <div class="container d-flex align-items-center">
-
-                <h1 class="logo me-auto"><a href="Dashboard.aspx">MediHealth</a></h1>
+            <div class="container d-flex align-items-center" >
+                 <%--<div class=" align-items-center fixed-top " style="padding-top:1em; padding-bottom:2em; background-color:aqua;" >--%>
+                <h1 class="logo me-auto"><a href="/Dashboard.aspx">MediHealth</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-                <asp:Panel runat="server" ID="pnllog">
-
-                    <nav id="navbar" class="navbar order-last order-lg-0">
+                <asp:Panel runat="server" ID="pnllog" >
+                    <nav id="navbar" class="navbar navbar-expand-md" >
                         <ul>
                             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                             <li><a class="nav-link scrollto" href="#about">About</a></li>
                             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                            <li class="dropdown"><a href="#"><span>Register As...</span> </a>
+                            <li class="dropdown"><a class="nav-link scrollto " id="regist" runat="server" href="#"><span>Register As...</span> </a>
                                 <ul>
-                                    <%--<li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="#">Deep Drop Down 1</a></li>
-                                        <li><a href="#">Deep Drop Down 2</a></li>
-                                        <li><a href="#">Deep Drop Down 3</a></li>
-                                        <li><a href="#">Deep Drop Down 4</a></li>
-                                        <li><a href="#">Deep Drop Down 5</a></li>
-                                    </ul>
-                                </li>--%>
-                                    <li><a  class="dropdown-item" href="/PatientRegistration.aspx">Patient</a></li>
-                                    <li><a href="#">Doctor</a></li>
+                                    <li><a runat="server" class="dropdown-item"  href="/PatientRegistration.aspx">Patient</a></li>
+                                    <li><a runat="server" class="dropdown-item" href="/Functionality/DoctorsRegistration.aspx">Doctor</a></li>
                                 </ul>
                             </li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" id="dropdown06">Login <span class="caret"></span></a>
+                                    aria-expanded="false" runat="server" id="dropdown06">Login <span class="caret"></span></a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdown04">
                                     <li><a class="dropdown-item" href="/login.aspx">Patient</a></li>
                                     <li class="nav-item">
@@ -128,11 +118,23 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                         <i class="bi bi-list mobile-nav-toggle"></i>
                     </nav>
                 </asp:Panel>
+            </div>
+            
                 <!-- .navbar -->
 
-                <a href="#appointment" class="appointment-btn scrollto" style="background-color:red; color:black; font:bolder; font-size:large; font-weight:900"  ><span style="color:black" class="d-none d-md-inline">Make an</span> Appointment</a>
-            </div>
+
+
+                <%--<a href="#appointment" class="appointment-btn" style="background-color:red; color:black; font:bolder; font-size:large; font-weight:900"  ><span style="color:black" class="d-none d-md-inline">Make an</span> Appointment</a>--%>
+
+                <asp:Panel ID="LgRegis" runat="server">
+                    <asp:Label ID="lbllgged" runat="server" ></asp:Label>
+                    <asp:Button ID="btnlgOut" OnClick="btnlgOut_Click" Text="Log Out" CssClass="btn btn-outline-info" Visible="false"  runat="server" />
+                </asp:Panel>
         </header>
+
+        
+
+
         <!-- End Header -->
 
         <br />
@@ -141,12 +143,12 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
         <br />
         <br />
         <br />
-
+            
         <div>
             <asp:ContentPlaceHolder ID="maincontent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <%--</div>--%>
+                    
 
         <!-- ======= Footer ======= -->
         <footer id="footer">
@@ -155,7 +157,7 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
             <div class="container d-md-flex py-4">
                 <div class="me-md-auto text-center text-md-start">
                     <div class="copyright">
-                        &copy; Copyright <strong><span>MediHealth</span></strong>. All Rights Reserved
+                        &copy;  <%: DateTime.Now.Year %> - Copyright <strong><span>MediHealth</span></strong>. All Rights Reserved
                     </div>
                     <div class="credits">
                         <!-- All the links in the footer should remain intact. -->
@@ -185,9 +187,9 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Admin Login</h4>
-                        <button type="button" class="close"
+                    <div class="modal-header" style="background-color:aqua;" >
+                        <h4 class="modal-title" style="background-color:aqua;">Admin Login</h4>
+                        <button type="button" class="close; btn btn-outline-warning;"
                             data-dismiss="modal">
                             &times;</button>
                     </div>
@@ -198,8 +200,8 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
 
                         <asp:Label ID="lblmsg" runat="server"></asp:Label>
                         <div>
-                            <asp:Button ID="btnLogin" OnClick="btnLogin_Click" ForeColor="White" BorderStyle="Groove" BackColor="#4CAF50" ValidationGroup="admin"
-                                CssClass="btn btn-outline-success btn-block" runat="server" Text="Login" />
+                            <asp:Button ID="btnLogin" OnClick="btnLogin_Click"  BorderStyle="Groove" ValidationGroup="admin" style="padding-right:15em; padding-left: 10em; text-align-last:center;"
+                                CssClass="btn btn-outline-success btn-block pull-left text-center" runat="server" Text="Login" />
                         </div>
                     </div>
 
@@ -226,6 +228,10 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>

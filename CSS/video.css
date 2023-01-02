@@ -1,0 +1,26 @@
+﻿.back_video {
+
+    position:absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    
+}
+
+@media (min-aspect-ration: 16/9) {
+
+    .back_video {
+    
+        width: 100%;
+        height: auto;
+    
+    }
+}
+
+@media (max-aspect-ration: 16/9) {
+
+    .back_video {
+        width: auto;
+        height: 100%;
+    }
+}

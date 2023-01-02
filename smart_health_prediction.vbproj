@@ -136,6 +136,7 @@
       <DependentUpon>PatientDB.mdf</DependentUpon>
     </Content>
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\Admin_DP.jfif" />
     <Content Include="assets\img\DP_1.png" />
     <Content Include="assets\img\Health System Background.jpg" />
     <Content Include="assets\img\about.jpg" />
@@ -160,6 +161,7 @@
     <Content Include="assets\img\gallery\gallery-8.jpg" />
     <Content Include="assets\img\hero-bg.jpg" />
     <Content Include="assets\img\ImageBCK.jpg" />
+    <Content Include="assets\img\Medical_Health_Background.mp4" />
     <Content Include="assets\img\testimonials\testimonials-1.jpg" />
     <Content Include="assets\img\testimonials\testimonials-2.jpg" />
     <Content Include="assets\img\testimonials\testimonials-3.jpg" />
@@ -167,6 +169,7 @@
     <Content Include="assets\img\testimonials\testimonials-5.jpg" />
     <Content Include="assets\img\Wallpaper2.jpeg" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\Medical_Health_Background.mp4" />
     <Content Include="assets\scss\Readme.txt" />
     <Content Include="assets\vendor\animate.css\animate.compat.css" />
     <Content Include="assets\vendor\animate.css\animate.css" />
@@ -240,10 +243,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="CSS\Dashboard.css" />
+    <Content Include="CSS\video.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Functionality\DoctorsRegistration.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -299,7 +304,6 @@
     <Content Include="E-Health System.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="LoginCrel.ascx" />
-    <Content Include="PatientRegistration.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -377,6 +381,13 @@
       <DependentUpon>E-Health System.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Functionality\DoctorsRegistration.aspx.designer.vb">
+      <DependentUpon>DoctorsRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Functionality\DoctorsRegistration.aspx.vb">
+      <DependentUpon>DoctorsRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
@@ -412,13 +423,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="PatientRegistration.aspx.designer.vb">
-      <DependentUpon>PatientRegistration.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PatientRegistration.aspx.vb">
-      <DependentUpon>PatientRegistration.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>
@@ -474,7 +478,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Functionality\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
