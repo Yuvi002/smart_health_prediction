@@ -89,15 +89,23 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
                 <asp:Panel runat="server" ID="pnllog" >
-                    <nav id="navbar" class="navbar navbar-expand-md" >
+                    <nav id="navbar"  class="navbar navbar-expand-md" >
                         <ul>
-                            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+
+                            <li><a href="#hero">Home</a></li>
+
                             <li><a class="nav-link scrollto" href="#about">About</a></li>
-                            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                            <li class="dropdown"><a class="nav-link scrollto " id="regist" runat="server" href="#"><span>Register As...</span> </a>
+                            
+                            <li class="dropdown"><a class="navbar navbar-expand-md" id="regist" runat="server" href="#"><span>Register As...</span> </a>
                                 <ul>
                                     <li><a runat="server" class="dropdown-item"  href="/PatientRegistration.aspx">Patient</a></li>
+
                                     <li><a runat="server" class="dropdown-item" href="/Functionality/DoctorsRegistration.aspx">Doctor</a></li>
+
+                                    <li><a runat="server" class="dropdown-item" href="#">Lab Technician</a></li>
+
+                                    <li><a runat="server" class="dropdown-item" href="#">Pharmacist</a></li>
+
                                 </ul>
                             </li>
 
@@ -107,7 +115,7 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                                 <ul class="dropdown-menu" aria-labelledby="dropdown04">
                                     <li><a class="dropdown-item" href="/login.aspx">Patient</a></li>
                                     <li class="nav-item">
-                                    <li><a class="dropdown-item" href="/loginrecruiter.aspx">Doctor</a></li>
+                                    <li><a class="dropdown-item" href="/DoctorLogin.aspx">Doctor</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="nav-item">
                                         <a rel="modal:open" class="dropdown-item" id="modopen"
@@ -118,6 +126,12 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                         <i class="bi bi-list mobile-nav-toggle"></i>
                     </nav>
                 </asp:Panel>
+
+                <%--Panel for Patient--%>
+                <asp:Panel ID="pnlPatient" Visible="false" runat="server" class="navbar navbar-expand-md" >
+
+                </asp:Panel>
+
             </div>
             
                 <!-- .navbar -->
@@ -209,10 +223,13 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                         <button type="button" class="btn btn-outline-danger pull-left btn-block"
                             data-dismiss="modal">
                             Close</button><br />
+                        <p>Not a member? <a href="#">Sign Up</a></p>
+                        <p>Forgot <a href="#">Password?</a></p>
                     </div>
                 </div>
             </div>
         </div>
+
         <script>
             function adminModal() {
                 $(document).ready(function () {
@@ -220,6 +237,7 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 });
             }
         </script>
+
     </form>
 
     <!-- Vendor JS Files -->

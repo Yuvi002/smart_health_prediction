@@ -14,10 +14,12 @@ Public Class Dashboard
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        TextBox1.Focus()
+
         If (Not Page.IsPostBack) Then
-            'LoadCat()
+            LoadCat()
             Me.BindGrid()
-            'TextBox1_TextChanged(TextBox1, Nothing)
+            TextBox1_TextChanged(TextBox1, Nothing)
         End If
 
     End Sub
@@ -31,7 +33,7 @@ Public Class Dashboard
                 Dim adapter = New SqlDataAdapter("SELECT * from tblCategory", _connectString)
                 adapter.Fill(category)
                 ddlCategory.DataSource = category
-                ddlCategory.DataTextField = "Cat_ID"
+                ddlCategory.DataValueField = "Cat_ID"
                 ddlCategory.DataTextField = "Cat_Name"
                 ddlCategory.DataBind()
             Catch ex As Exception
@@ -48,7 +50,6 @@ Public Class Dashboard
     End Sub
 
     Private Sub BindGrid()
-
         Dim Cat_ID As String = ddlCategory.SelectedValue
         Dim con As New SqlConnection(_connectString)
         Dim cmd As New SqlCommand()
@@ -57,12 +58,12 @@ Public Class Dashboard
         Dim sqlParam As String = ""
         Dim sqlParamCat As String = ""
         If (Not IsNothing(TextBox1.Text.Trim())) Then
-            sqlParam = "Select Info_Name, Info_Spec, Cat_ID FROM tblInformation "
+            sqlParam = "and Info_Name LIKE '%' + @infoname + '%'"
         End If
         If (Cat_ID <> "-1") Then
-            sqlParamCat = "select * tblInformation.Cat_ID = @Cat_ID"
+            sqlParamCat = "and tblInformation.Cat_ID = @Cat_ID"
         End If
-        cmd.CommandText = "Select Info_ID, Info_Name, Info_Spec, Cat_ID FROM tblInformation WHERE Info_Name LIKE '%' + @infoname + '%' " + sqlParam
+        cmd.CommandText = "Select Info_ID, Info_Name, Info_Spec, Cat_ID FROM tblInformation WHERE Info_Name LIKE '%' + @infoname + '%' " + sqlParam + sqlParamCat
         cmd.Parameters.AddWithValue("@infoname", TextBox1.Text.Trim())
         cmd.Parameters.AddWithValue("@Cat_ID", Cat_ID)
         Dim dt As New DataTable()
@@ -131,8 +132,8 @@ Public Class Dashboard
 
     Protected Sub gvCustomers_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
 
-        'TryCast(gvCustomers.FindControl("DataPager1"), DataPager).SetPageProperties(e.NewPageIndex, e.NewPageIndex, False)
-        'TextBox1_TextChanged(TextBox1, Nothing)
+        TryCast(gvCustomers.FindControl("DataPager1"), DataPager).SetPageProperties(e.NewPageIndex, e.NewPageIndex, False)
+        TextBox1_TextChanged(TextBox1, Nothing)
 
         gvCustomers.PageIndex = e.NewPageIndex
         Me.BindGrid()
@@ -142,6 +143,18 @@ Public Class Dashboard
         If (gvCustomers.Rows.Count > 0) Then
             gvCustomers.UseAccessibleHeader = True
             gvCustomers.HeaderRow.TableSection = TableRowSection.TableHeader
+        End If
+    End Sub
+
+    Protected Sub gvCustomers_RowCommand(sender As Object, e As GridViewCommandEventArgs)
+        'If e.CommandName = "Book Your Appointment Today" Then
+        '    Response.Redirect("~/Functionality/F12_DoctorBooking.aspx")
+        'End If
+        If (IsNothing(Session("pid"))) Then
+            Response.Redirect("~/Login.aspx")
+
+        Else
+            Response.Redirect("~/Functionality/F12_DoctorBooking")
         End If
     End Sub
 End Class

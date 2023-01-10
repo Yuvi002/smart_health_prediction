@@ -46,6 +46,9 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DayPilot, Version=5.0.303.0, Culture=neutral, PublicKeyToken=ce5d34538e20ef65, processorArchitecture=MSIL">
+      <HintPath>packages\DayPilot.5.0.303\lib\DayPilot.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -246,9 +249,11 @@
     <Content Include="CSS\video.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DoctorLogin.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Functionality\DoctorsRegistration.aspx" />
+    <Content Include="Functionality\F12_DoctorBooking.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -304,6 +309,7 @@
     <Content Include="E-Health System.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="LoginCrel.ascx" />
+    <Content Include="PatientRegistration.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -374,6 +380,13 @@
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DoctorLogin.aspx.designer.vb">
+      <DependentUpon>DoctorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorLogin.aspx.vb">
+      <DependentUpon>DoctorLogin.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="E-Health System.Master.designer.vb">
       <DependentUpon>E-Health System.Master</DependentUpon>
     </Compile>
@@ -386,6 +399,13 @@
     </Compile>
     <Compile Include="Functionality\DoctorsRegistration.aspx.vb">
       <DependentUpon>DoctorsRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Functionality\F12_DoctorBooking.aspx.designer.vb">
+      <DependentUpon>F12_DoctorBooking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Functionality\F12_DoctorBooking.aspx.vb">
+      <DependentUpon>F12_DoctorBooking.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.vb">
@@ -423,6 +443,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PatientRegistration.aspx.designer.vb">
+      <DependentUpon>PatientRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientRegistration.aspx.vb">
+      <DependentUpon>PatientRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>

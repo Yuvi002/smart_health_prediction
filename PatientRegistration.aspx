@@ -1,14 +1,10 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/E-Health System.Master" CodeBehind="DoctorsRegistration.aspx.vb" Inherits="smart_health_prediction.DoctorsRegistration" %>
- <%--<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>--%>
-
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/E-Health System.Master" CodeBehind="PatientRegistration.aspx.vb" Inherits="smart_health_prediction.PatientRegistration" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="maincontent" runat="server">
+
     <div class="container">
-        <h1 class="text-center" style="color: aquamarine">Doctor's Registration</h1>
+        <h1 class="text-center" style="color: aquamarine">Patient's Registration</h1>
         <br />
         <br />
         <div id="leftSide">
@@ -121,7 +117,7 @@
                     <asp:TextBox ID="txtEmail" runat="server"
                         CssClass="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqEmail" ControlToValidate="txtEmail" runat="server" ErrorMessage="Email is required"></asp:RequiredFieldValidator><br />
-                    <%--<asp:RegularExpressionValidator ID="RegEmail" runat="server" ControlToValidate="txtEmail"
+                   <%-- <asp:RegularExpressionValidator ID="RegEmail" runat="server" ControlToValidate="txtEmail"
                         ValidationExpression="^[a-zA-Z][\w\.-][a-zA-Z0-9]@[a-zA-Z0-9][\w\.-][a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
                         ErrorMessage="Not Valid"></asp:RegularExpressionValidator>--%>
                 </div>
@@ -137,7 +133,7 @@
                     <asp:TextBox ID="txtUsername" runat="server"
                         CssClass="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="reqUsername" ControlToValidate="txtUsername" runat="server" ErrorMessage="Username Required"></asp:RequiredFieldValidator><br />
-                   <%-- <asp:RegularExpressionValidator ID="regUsername" ControlToValidate="txtUsername"
+                  <%--  <asp:RegularExpressionValidator ID="regUsername" ControlToValidate="txtUsername"
                         ValidationExpression="^[a-zA-Z]{5,}$" runat="server"
                         ErrorMessage="Username must be minimum 5 characters"></asp:RegularExpressionValidator>--%>
                 </div>
@@ -166,14 +162,16 @@
         <br />
 
         <fieldset>
-            <asp:Button ID="btnSubmit" BackColor="Blue" ForeColor="Black" OnClick="btnSubmit_Click1"  runat="server" CssClass="btn btn-outline-primary btn-block" Text="Register"/>
-            <asp:Button ID="btnClear" BackColor="Red" ForeColor="Black" OnClick="btnClear_Click1"  runat="server" CssClass="btn btn-outline-danger btn-block" Text="Clear All" CausesValidation="false" />
+            <asp:Button ID="btnSubmit" BackColor="Blue" ForeColor="Black" OnClick="btnSubmit_Click"  runat="server" CssClass="btn btn-outline-primary btn-block" Text="Register"/>
+            <asp:Button ID="btnClear" BackColor="Red" ForeColor="Black" OnClick="btnClear_Click"  runat="server" CssClass="btn btn-outline-danger btn-block" Text="Clear All" CausesValidation="false" />
             <br />
             <asp:Label ID="lblmsg" runat="server" Text=""></asp:Label>
         </fieldset>
     </div>
 
 </asp:Content>
+
+
 
 
 

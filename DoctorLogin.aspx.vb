@@ -8,8 +8,10 @@ Imports System.Text
 Imports System.IO
 Imports System.Security.Cryptography
 
-Public Class Login
+
+Public Class DoctorLogin
     Inherits System.Web.UI.Page
+
     Private ReadOnly _conString As String
     Public Sub New()
         _conString =
@@ -17,6 +19,7 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
         If (Not Page.IsPostBack) Then
             'Verify if uname and pw cookies are not null
             If (Not IsNothing(Request.Cookies("Username")) And Not IsNothing(Request.Cookies("Password"))) Then
@@ -28,27 +31,11 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
 
             End If
         End If
+
     End Sub
 
-    Private Function Decrypt(cipherText As String) As String
-        Dim EncryptionKey As String = "MAKV2SPBNI99212"
-        Dim clearBytes As Byte() = Encoding.Unicode.GetBytes(cipherText)
-        Using encryptor As Aes = Aes.Create()
-            Dim pdb As New Rfc2898DeriveBytes(EncryptionKey, New Byte() {&H49, &H76, &H61, &H6E, &H20, &H4D, &H65, &H64, &H76, &H65, &H64, &H65, &H76})
-            encryptor.Key = pdb.GetBytes(32)
-            encryptor.IV = pdb.GetBytes(16)
-            Using ms As New MemoryStream()
-                Using cs As New CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write)
-                    cs.Write(clearBytes, 0, clearBytes.Length)
-                    cs.Close()
-                End Using
-                cipherText = Convert.ToBase64String(ms.ToArray())
-            End Using
-        End Using
-        Return cipherText
-    End Function
-
     Protected Sub btnLogin_Click(sender As Object, e As EventArgs)
+
         'get the value of Username and Password fields and state of checkbox from 
         'login form
         Dim Username As String = userLogin.Username
@@ -61,7 +48,7 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
         cmd.CommandType = CommandType.Text
         'searching for a record containing matching Username & Password with 
         'an active status
-        cmd.CommandText = "select * from tblPatient where Username=@un and Password=@pass and status=1"
+        cmd.CommandText = "select * from tblDoctor where Username=@un and Password=@pass and status=1"
 
         'create two parameterized query for the above select statement
         cmd.Parameters.AddWithValue("@un", Username)
@@ -89,19 +76,41 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
                     Response.Cookies("Password").Expires = DateAndTime.Now.AddDays(-100)
                     'delete content of Password field
                 End If
+
                 'create and save Username in a session variable
-                Session("sname") = Username
+                Session("docname") = Username
                 'create and save userid in a session variable
-                Session("pid") = myReader("Patient_Id").ToString()
+                Session("docid") = myReader("Doctor_Id").ToString()
                 'redirect to the corresponding page
-                Response.Redirect("~/Functionality/F12_DoctorBooking") 'PatientsBooking
+                Response.Redirect("~/Functionality/F12_DoctorBooking")
                 con.Close()
             End If
         Else
 
             'delete content of Password field 
+
             lblmsg.Text = "You are not registered or your account has been suspended!"
         End If
-
     End Sub
+
+    Private Function Decrypt(cipherText As String) As String
+        Dim EncryptionKey As String = "MAKV2SPBNI99212"
+        Dim clearBytes As Byte() = Encoding.Unicode.GetBytes(cipherText)
+        Using encryptor As Aes = Aes.Create()
+            Dim pdb As New Rfc2898DeriveBytes(EncryptionKey, New Byte() {&H49, &H76, &H61, &H6E, &H20, &H4D, &H65, &H64, &H76, &H65, &H64, &H65, &H76})
+            encryptor.Key = pdb.GetBytes(32)
+            encryptor.IV = pdb.GetBytes(16)
+            Using ms As New MemoryStream()
+                Using cs As New CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write)
+                    cs.Write(clearBytes, 0, clearBytes.Length)
+                    cs.Close()
+                End Using
+                cipherText = Convert.ToBase64String(ms.ToArray())
+            End Using
+        End Using
+        Return cipherText
+    End Function
+
+
+
 End Class

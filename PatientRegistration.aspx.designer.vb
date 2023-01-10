@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class DoctorsRegistration
+Partial Public Class PatientRegistration
 
     '''<summary>
     '''lblFname control.

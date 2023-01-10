@@ -11,11 +11,13 @@ Public Class E_Health_System
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If (Not Page.IsPostBack) Then
-            If (Not IsNothing(Request.Cookies("AdmUsername")) And Not IsNothing(Request.Cookies("admPass"))) Then
-                ucadminlogin.Username = Request.Cookies("AdmUsername").Value
+            If (Not IsNothing(Request.Cookies("auname")) And Not IsNothing(Request.Cookies("admPass"))) Then
+                ucadminlogin.Username = Request.Cookies("auname").Value
                 ucadminlogin.Password = Request.Cookies("admPass").Value
             End If
         End If
+
+        'Admin  
         If (Not IsNothing(Session("admUsername"))) Then
             regist.Visible = False
             LgRegis.CssClass = "nav navbar-nav navbar-right"
@@ -33,6 +35,30 @@ Public Class E_Health_System
             'Page.Controls.Remove(pnllog)
         End If
 
+        'Patient
+        If (Not IsNothing(Session("pat_uname"))) Or (Not IsNothing(Session("pat_id"))) Then
+            regist.Visible = False
+            LgRegis.CssClass = "nav navbar-nav navbar-right"
+            lbllgged.CssClass = "btn btn-outline-success text-white"
+            lbllgged.Text = "Welcome " + Session("pat_uname")
+            lbllgged.CssClass = "btn btn-outline-success text-black"
+            btnlgOut.Visible = True
+            dropdown06.Visible = False
+            'pnlmanage.Visible = True
+            'pnlmanagemov.Style.Add("visibility", "hidden")
+            'Page.Controls.Remove(pnlmanagemov)
+            'pnlprofile.Style.Add("visibility", "hidden")
+            'Page.Controls.Remove(pnlprofile)
+            'pnllog.Style.Add("visibility", "hidden")
+            'Page.Controls.Remove(pnllog)
+
+            'Retrieving Patients Session
+            Dim patient_id As Integer = Convert.ToInt32(Session("pid"))
+
+
+        End If
+
+        'Doctor
         If (Not IsNothing(Session("doc_uname"))) Then
             regist.Visible = False
             LgRegis.CssClass = "nav navbar-nav navbar-right"
@@ -49,6 +75,8 @@ Public Class E_Health_System
             'pnllog.Style.Add("visibility", "hidden")
             'Page.Controls.Remove(pnllog)
         End If
+
+
 
     End Sub
 
@@ -75,22 +103,22 @@ Public Class E_Health_System
         If (myReader.HasRows) Then
             If myReader.Read Then
                 'create a memory cookie to store username and pwd
-                Response.Cookies("AdmUsername").Value = username
+                Response.Cookies("auname").Value = username
                 Response.Cookies("admPass").Value = password
                 If (chk) Then
                     'if checkbox is checked, make cookies persistent
-                    Response.Cookies("AdmUsername").Expires = DateAndTime.Now.AddDays(100)
+                    Response.Cookies("auname").Expires = DateAndTime.Now.AddDays(100)
                     Response.Cookies("admPass").Expires = DateAndTime.Now.AddDays(100)
                 Else
                     'delete the cookies if checkbox is unchecked
-                    Response.Cookies("AdmUsername").Expires = DateAndTime.Now.AddDays(-100)
+                    Response.Cookies("auname").Expires = DateAndTime.Now.AddDays(-100)
                     Response.Cookies("admPass").Expires = DateAndTime.Now.AddDays(-100)
                     'delete content of password field
                 End If
                 'create and save adminuname in a session variable
                 Session("admUsername") = username
                 'create and save adminid in a session variable
-                Session("admid") = myReader("adm_id").ToString()
+                Session("admid") = myReader("Adm_id").ToString()
                 'redirect to the dashboard page
                 Response.Redirect("~/Dashboard")
                 con.Close()
@@ -109,12 +137,12 @@ Public Class E_Health_System
     End Sub
 
 
-    Protected Sub btnlgOut_Click(sender As Object, e As EventArgs)
+    Sub btnlgOut_Click(sender As Object, e As EventArgs)
         logout()
     End Sub
 
     Private Sub logout()
-        If (Not IsNothing(Session("admUsername"))) Then
+        If (Not IsNothing(Session("admUsername"))) Or (Not IsNothing(Session("doc_uname"))) Or (Not IsNothing(Session("pat_uname"))) Then
             'Remove all session
             Session.RemoveAll()
             'Destroy all Session objects
@@ -123,6 +151,4 @@ Public Class E_Health_System
             Response.Redirect("~/Dashboard")
         End If
     End Sub
-
-
 End Class

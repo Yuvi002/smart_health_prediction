@@ -59,6 +59,15 @@ Partial Public Class E_Health_System
     Protected WithEvents dropdown06 As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
+    '''pnlPatient control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlPatient As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''LgRegis control.
     '''</summary>
     '''<remarks>
