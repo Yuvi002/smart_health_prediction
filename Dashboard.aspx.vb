@@ -73,59 +73,6 @@ Public Class Dashboard
         gvCustomers.DataBind()
     End Sub
 
-    'Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs)
-    '    Dim Cat_ID As String = ddlCategory.SelectedValue
-    '    Dim con As New SqlConnection(_connectString)
-    '    Dim cmd As New SqlCommand()
-    '    cmd.Connection = con
-    '    cmd.CommandType = CommandType.Text
-    '    Dim sqlParam As String = ""
-    '    Dim sqlParamCat As String = ""
-    '    If (Not IsNothing(TextBox1.Text.Trim())) Then
-    '        sqlParam = "Select Info_Name, Info_Spec FROM tblInformation "
-    '    End If
-    '    If (Cat_ID <> "-1") Then
-    '        sqlParamCat = "and tblInformation.Cat_ID = @Cat_ID"
-    '    End If
-    '    cmd.CommandText = "Select Info_ID, Info_Name, Info_Spec FROM tblInformation " + sqlParam + sqlParamCat
-    '    cmd.Parameters.AddWithValue("@infoname", TextBox1.Text.Trim())
-    '    cmd.Parameters.AddWithValue("@Cat_ID", Cat_ID)
-    '    Dim table As New DataTable()
-    '    Dim da As New SqlDataAdapter(cmd)
-    '    da.Fill(table)
-    'lvInfo.DataSource = table
-    'lvInfo.DataBind()
-    'UpdatePanel1.Visible = True
-    'End Sub
-
-    'Protected Sub lvInfo_PagePropertiesChanging(sender As Object, e As PagePropertiesChangingEventArgs)
-    '    TryCast(lvInfo.FindControl("DataPager1"), DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, False)
-    '    TextBox1_TextChanged(TextBox1, Nothing)
-
-    'End Sub
-
-    'Protected Sub gvsSymptoms_RowDataBound(sender As Object, e As GridViewRowEventArgs)
-    '    If e.Row.RowType = DataControlRowType.DataRow Then
-    '        e.Row.Cells(0).Text = Regex.Replace(e.Row.Cells(0).Text, lnkSearch.Text.Trim(), Function(match As Match) String.Format("<span style = 'background-color: #D9EDF7'>{0}</span>", match.Value),
-    '        RegexOptions.IgnoreCase)
-    '    End If
-    'End Sub
-
-
-    'Protected Sub gvInfo_RowDataBound(sender As Object, e As GridViewRowEventArgs)
-    '    If e.Row.RowType = DataControlRowType.DataRow Then
-    '        e.Row.Cells(0).Text = Regex.Replace(e.Row.Cells(0).Text, TextBox1.Text.Trim(), Function(match As Match) String.Format("<span style = 'background-color: #D9EDF7'>{0}</span>", match.Value),
-    '        RegexOptions.IgnoreCase)
-    '    End If
-    'End Sub
-
-    'Protected Sub gvInfo_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-    '    TryCast(lvInfo.FindControl("DataPager1"), DataPager).SetPageProperties(e.NewPageIndex, e.NewPageIndex, False)
-    '    TextBox1_TextChanged(TextBox1, Nothing)
-
-    'End Sub
-
-
     Protected Sub gvCustomers_RowDataBound1(sender As Object, e As GridViewRowEventArgs)
 
     End Sub
@@ -147,14 +94,11 @@ Public Class Dashboard
     End Sub
 
     Protected Sub gvCustomers_RowCommand(sender As Object, e As GridViewCommandEventArgs)
-        'If e.CommandName = "Book Your Appointment Today" Then
-        '    Response.Redirect("~/Functionality/F12_DoctorBooking.aspx")
-        'End If
         If (IsNothing(Session("pid"))) Then
             Response.Redirect("~/Login.aspx")
 
         Else
-            Response.Redirect("~/Functionality/F12_DoctorBooking")
+            Response.Redirect("~/F12_DoctorBooking")
         End If
     End Sub
 End Class

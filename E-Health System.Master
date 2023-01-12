@@ -52,6 +52,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
     <form id="form1" runat="server">
             <asp:ScriptManager runat="server">
@@ -82,73 +83,67 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
         </asp:ScriptManager>
 
         <header id="header" class="fixed-top">
-            <div class="container d-flex align-items-center" >
-                 <%--<div class=" align-items-center fixed-top " style="padding-top:1em; padding-bottom:2em; background-color:aqua;" >--%>
-                <h1 class="logo me-auto"><a href="/Dashboard.aspx">MediHealth</a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="Dashboard.aspx">Medilab</a></h1>
 
-                <asp:Panel runat="server" ID="pnllog" >
-                    <nav id="navbar"  class="navbar navbar-expand-md" >
-                        <ul>
+        <%--LogOut Panel--%>
+        <asp:Panel runat="server" ID="lgout">
+                                <asp:Label runat="server" ForeColor="Black" Font-Bold="true" BackColor="blue" ID="lbllgged"></asp:Label>
+                                <asp:Button runat="server" ID="btnlgout" ForeColor="Black" Font-Bold="true" BackColor="IndianRed" OnClick="btnlgout_Click" CausesValidation="false" Text="Log out"
+                                    CssClass="btn btn-outline-info" Visible="false" />
+                            </asp:Panel>
 
-                            <li><a href="#hero">Home</a></li>
-
-                            <li><a class="nav-link scrollto" href="#about">About</a></li>
-                            
-                            <li class="dropdown"><a class="navbar navbar-expand-md" id="regist" runat="server" href="#"><span>Register As...</span> </a>
-                                <ul>
-                                    <li><a runat="server" class="dropdown-item"  href="/PatientRegistration.aspx">Patient</a></li>
-
-                                    <li><a runat="server" class="dropdown-item" href="/Functionality/DoctorsRegistration.aspx">Doctor</a></li>
-
-                                    <li><a runat="server" class="dropdown-item" href="#">Lab Technician</a></li>
-
-                                    <li><a runat="server" class="dropdown-item" href="#">Pharmacist</a></li>
-
-                                </ul>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" runat="server" id="dropdown06">Login <span class="caret"></span></a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <li><a class="dropdown-item" href="/login.aspx">Patient</a></li>
-                                    <li class="nav-item">
-                                    <li><a class="dropdown-item" href="/DoctorLogin.aspx">Doctor</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li class="nav-item">
-                                        <a rel="modal:open" class="dropdown-item" id="modopen"
-                                            data-toggle="modal" href="#modadmin">Admin</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <i class="bi bi-list mobile-nav-toggle"></i>
-                    </nav>
-                </asp:Panel>
-
-                <%--Panel for Patient--%>
-                <asp:Panel ID="pnlPatient" Visible="false" runat="server" class="navbar navbar-expand-md" >
-
-                </asp:Panel>
-
-            </div>
-            
-                <!-- .navbar -->
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          
+            <%--Registration Panel--%>
+          <asp:Panel ID="hypregister" runat="server">
+                <li class="dropdown"><a href="#"><span>Registration</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="PatientRegistration.aspx">Patient Registration</a></li>
+              <li><a href="DoctorsRegistration.aspx" >Doctor Registration</a></li>
+              <li><a href="#PharmacistRegistration">Pharmacist Registration</a></li>
+              <li><a href="##TechnicianRegistration">Lab Technician Registration</a></li>
+            </ul>
+          </li>
+            </asp:Panel>
 
 
+            <%--Modal Admin & Normal LogIn--%>
+            <asp:Panel ID="pnllogin" runat="server">
+                <li class="dropdown"><a href="#" aria-haspopup="true" aria-expanded="false"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="Login.aspx">Patient Login</a></li>
+             <li><a href="DoctorLogin.aspx">Doctor Login</a></li>
+                <li><a rel="modal:open" id="modopen" data-toggle="modal" href="#modadmin" >Admin</a></li>
+                </ul>
+                </li>
+            </asp:Panel>
 
-                <%--<a href="#appointment" class="appointment-btn" style="background-color:red; color:black; font:bolder; font-size:large; font-weight:900"  ><span style="color:black" class="d-none d-md-inline">Make an</span> Appointment</a>--%>
+            <%-- Menu To view Patientprofile --%>
+            <asp:Panel ID="pnlpatient" Visible="false" runat="server">
+                <li class="dropdown"><a href="#"><span>Patient Menu</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li>
+                  <asp:HyperLink ID="hyuser" runat="server">Patient Booking</asp:HyperLink>
+              </li>
+            </ul>
+          </li>
+            </asp:Panel>
 
-                <asp:Panel ID="LgRegis" runat="server">
-                    <asp:Label ID="lbllgged" runat="server" ></asp:Label>
-                    <asp:Button ID="btnlgOut" OnClick="btnlgOut_Click" Text="Log Out" CssClass="btn btn-outline-info" Visible="false"  runat="server" />
-                </asp:Panel>
-        </header>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-        
+          <a href="F12_DoctorBooking.aspx" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
 
+      
 
+    </div>
+  </header>
         <!-- End Header -->
 
         <br />

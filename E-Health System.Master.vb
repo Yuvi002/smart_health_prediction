@@ -19,61 +19,61 @@ Public Class E_Health_System
 
         'Admin  
         If (Not IsNothing(Session("admUsername"))) Then
-            regist.Visible = False
-            LgRegis.CssClass = "nav navbar-nav navbar-right"
+            hypregister.Visible = False
+            lgout.CssClass = "nav navbar-nav navbar-right"
             lbllgged.CssClass = "btn btn-outline-success text-white"
             lbllgged.Text = "Welcome " + Session("admUsername")
             lbllgged.CssClass = "btn btn-outline-success text-black"
-            btnlgOut.Visible = True
-            dropdown06.Visible = False
+            btnlgout.Visible = True
+            'dropdown06.Visible = False
             'pnlmanage.Visible = True
             'pnlmanagemov.Style.Add("visibility", "hidden")
-            'Page.Controls.Remove(pnlmanagemov)
-            'pnlprofile.Style.Add("visibility", "hidden")
-            'Page.Controls.Remove(pnlprofile)
-            'pnllog.Style.Add("visibility", "hidden")
-            'Page.Controls.Remove(pnllog)
+            'Page.Controls.Remove(pnlmanagemov)`
+            pnlpatient.Style.Add("visibility", "hidden")
+            Page.Controls.Remove(pnlpatient)
+            pnllogin.Style.Add("visibility", "hidden")
+            Page.Controls.Remove(pnllogin)
         End If
 
         'Patient
-        If (Not IsNothing(Session("pat_uname"))) Or (Not IsNothing(Session("pat_id"))) Then
-            regist.Visible = False
-            LgRegis.CssClass = "nav navbar-nav navbar-right"
+        If (Not IsNothing(Session("sname"))) Or (Not IsNothing(Session("pid"))) Then
+            hypregister.Visible = False
+            lgout.CssClass = "nav navbar-nav navbar-right"
             lbllgged.CssClass = "btn btn-outline-success text-white"
-            lbllgged.Text = "Welcome " + Session("pat_uname")
+            lbllgged.Text = "Welcome " + Session("sname")
             lbllgged.CssClass = "btn btn-outline-success text-black"
-            btnlgOut.Visible = True
-            dropdown06.Visible = False
+            btnlgout.Visible = True
+            'dropdown06.Visible = False
             'pnlmanage.Visible = True
             'pnlmanagemov.Style.Add("visibility", "hidden")
             'Page.Controls.Remove(pnlmanagemov)
-            'pnlprofile.Style.Add("visibility", "hidden")
-            'Page.Controls.Remove(pnlprofile)
-            'pnllog.Style.Add("visibility", "hidden")
-            'Page.Controls.Remove(pnllog)
+            pnlpatient.Visible = True
+            pnllogin.Style.Add("visibility", "hidden")
+            Page.Controls.Remove(pnllogin)
 
             'Retrieving Patients Session
             Dim patient_id As Integer = Convert.ToInt32(Session("pid"))
-
+            hyuser.Attributes("href") = ResolveUrl("~/F12_DoctorBooking?id=" & patient_id & "")
 
         End If
 
         'Doctor
-        If (Not IsNothing(Session("doc_uname"))) Then
-            regist.Visible = False
-            LgRegis.CssClass = "nav navbar-nav navbar-right"
+        If (Not IsNothing(Session("docname"))) Then
+            hypregister.Visible = False
+            lgout.CssClass = "nav navbar-nav navbar-right"
             lbllgged.CssClass = "btn btn-outline-success text-white"
-            lbllgged.Text = "Welcome " + Session("doc_uname")
+            lbllgged.Text = "Welcome " + Session("docname")
             lbllgged.CssClass = "btn btn-outline-success text-black"
-            btnlgOut.Visible = True
-            dropdown06.Visible = False
+            btnlgout.Visible = True
+            'dropdown06.Visible = False
             'pnlmanage.Visible = True
             'pnlmanagemov.Style.Add("visibility", "hidden")
             'Page.Controls.Remove(pnlmanagemov)
-            'pnlprofile.Style.Add("visibility", "hidden")
-            'Page.Controls.Remove(pnlprofile)
-            'pnllog.Style.Add("visibility", "hidden")
-            'Page.Controls.Remove(pnllog)
+            'pnlpatient.Style.Add("visibility", "hidden")
+            'Page.Controls.Remove(pnlpatient)
+            pnllogin.Style.Add("visibility", "hidden")
+            Page.Controls.Remove(pnllogin)
+            'docid
         End If
 
 
@@ -142,7 +142,7 @@ Public Class E_Health_System
     End Sub
 
     Private Sub logout()
-        If (Not IsNothing(Session("admUsername"))) Or (Not IsNothing(Session("doc_uname"))) Or (Not IsNothing(Session("pat_uname"))) Then
+        If (Not IsNothing(Session("admUsername"))) Or (Not IsNothing(Session("docname"))) Or (Not IsNothing(Session("sname"))) Then
             'Remove all session
             Session.RemoveAll()
             'Destroy all Session objects
@@ -151,4 +151,19 @@ Public Class E_Health_System
             Response.Redirect("~/Dashboard")
         End If
     End Sub
+
+    Protected Sub pnlmakebooking_Click(sender As Object, e As EventArgs)
+
+
+    End Sub
+
+    Private Sub makebooking()
+        If (IsNothing(Session("sname"))) Or (IsNothing(Session("docname"))) Or (IsNothing(Session("admUsername"))) Then
+            Response.Redirect("~/Login.aspx")
+        Else
+            Response.Redirect("~/F12_DoctorBooking")
+        End If
+    End Sub
+
+
 End Class

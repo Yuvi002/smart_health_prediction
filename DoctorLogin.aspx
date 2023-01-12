@@ -10,7 +10,7 @@
      <div id="container" style="padding:50px" class="container" >
         <div id="leftSide">
             <fieldset>
-                <legend>Dcotor's Login</legend>
+                <legend>Doctor's Login</legend>
                 <div class="form">
                     <user:login ID="userLogin" runat="server" />
                     <br />
@@ -28,5 +28,4 @@
             </fieldset>
         </div>
     </div>
-
 </asp:Content>

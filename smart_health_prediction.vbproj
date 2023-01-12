@@ -252,8 +252,8 @@
     <Content Include="DoctorLogin.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Functionality\DoctorsRegistration.aspx" />
-    <Content Include="Functionality\F12_DoctorBooking.aspx" />
+    <Content Include="DoctorsRegistration.aspx" />
+    <Content Include="F12_DoctorBooking.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -394,17 +394,17 @@
       <DependentUpon>E-Health System.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Functionality\DoctorsRegistration.aspx.designer.vb">
+    <Compile Include="DoctorsRegistration.aspx.designer.vb">
       <DependentUpon>DoctorsRegistration.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Functionality\DoctorsRegistration.aspx.vb">
+    <Compile Include="DoctorsRegistration.aspx.vb">
       <DependentUpon>DoctorsRegistration.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Functionality\F12_DoctorBooking.aspx.designer.vb">
+    <Compile Include="F12_DoctorBooking.aspx.designer.vb">
       <DependentUpon>F12_DoctorBooking.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Functionality\F12_DoctorBooking.aspx.vb">
+    <Compile Include="F12_DoctorBooking.aspx.vb">
       <DependentUpon>F12_DoctorBooking.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>

@@ -32,49 +32,13 @@ Partial Public Class E_Health_System
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''pnllog control.
+    '''lgout control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnllog As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''regist control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents regist As Global.System.Web.UI.HtmlControls.HtmlAnchor
-
-    '''<summary>
-    '''dropdown06 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dropdown06 As Global.System.Web.UI.HtmlControls.HtmlAnchor
-
-    '''<summary>
-    '''pnlPatient control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlPatient As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''LgRegis control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LgRegis As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents lgout As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''lbllgged control.
@@ -86,13 +50,49 @@ Partial Public Class E_Health_System
     Protected WithEvents lbllgged As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''btnlgOut control.
+    '''btnlgout control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnlgOut As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnlgout As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''hypregister control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hypregister As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''pnllogin control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnllogin As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''pnlpatient control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlpatient As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''hyuser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hyuser As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
     '''maincontent control.

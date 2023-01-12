@@ -94,11 +94,10 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
                 'create and save userid in a session variable
                 Session("pid") = myReader("Patient_Id").ToString()
                 'redirect to the corresponding page
-                Response.Redirect("~/Functionality/F12_DoctorBooking") 'PatientsBooking
+                Response.Redirect("~/F12_DoctorBooking") 'PatientsBooking
                 con.Close()
             End If
         Else
-
             'delete content of Password field 
             lblmsg.Text = "You are not registered or your account has been suspended!"
         End If
