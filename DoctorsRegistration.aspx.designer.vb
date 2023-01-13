@@ -77,13 +77,13 @@ Partial Public Class DoctorsRegistration
     Protected WithEvents lblRole As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtRole control.
+    '''ddlRole control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRole As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ddlRole As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''RequiredFieldValidator1 control.

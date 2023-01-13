@@ -24,7 +24,7 @@ Public Class Dashboard
 
     End Sub
 
-    Private Sub LoadCat()
+    Public Sub LoadCat()
 
         Dim category As New DataTable()
         Dim con As New SqlConnection(_connectString)

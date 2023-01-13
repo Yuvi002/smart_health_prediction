@@ -18,6 +18,13 @@ Public Class DoctorsRegistration
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If IsPostBack = False Then
+            ' invoke the getDoctorRole method
+            getDoctorRole()
+            'insert a default item in Dropdown
+            Dim li As New ListItem("Select Medical Field", "-1")
+            ddlRole.Items.Insert(0, li)
+        End If
         txtFname.Focus()
     End Sub
 
@@ -60,34 +67,28 @@ Public Class DoctorsRegistration
         End Select
     End Function
 
-    'Public Sub sendemail()
-    '    Dim filename As String
-    '    filename = Path.GetFileName(FileUpload1.PostedFile.FileName)
-    '    Dim msg As New MailMessage()
-    '    Dim sc As New SmtpClient()
-    '    Try
-    '        msg.From = New MailAddress("gangaramyogesh@gmail.com")
-    '        msg.To.Add(txtEmail.Text)
-    '        msg.Subject = "This is a Test Mail"
-    '        msg.IsBodyHtml = True
-    '        Dim msgBody As New StringBuilder()
-    '        msgBody.Append("Dear " + txtUsername.Text + ", your registration is successful, thank you for signing up on SmartHealth Predixtion System.")
-    '        msg.Attachments.Add(New Attachment(Server.MapPath("~/assets/img/") +
-    '       filename))
-    '        msgBody.Append("<a href='http://" +
-    '      HttpContext.Current.Request.Url.Authority + "/Login'>Click here to login to ...</a>")
-    '        msg.Body = msgBody.ToString()
-    '        sc.Host = "smtp.gmail.com"
-    '        sc.Port = 587
-    '        sc.UseDefaultCredentials = False
-    '        sc.Credentials = New System.Net.NetworkCredential("gangaramyogesh@gmail.com", "1234")
-    '        sc.EnableSsl = True
-    '        sc.Send(msg)
-    '        Response.Write("Email Sent successfully")
-    '    Catch ex As Exception
-    '        Response.Write(ex.Message)
-    '    End Try
-    'End Sub
+    Public Sub getDoctorRole()
+        Dim con As New SqlConnection(_conString)
+        Dim cmd As New SqlCommand()
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "Select * from tblDoctorRole"
+        cmd.Connection = con
+
+        'Create DataAdapter
+        Dim da As New SqlDataAdapter(cmd)
+        'Create DataSet
+        Dim ds As New DataSet()
+        'Fill the Dataset and ensure the DB Connection is closed 
+        da.Fill(ds)
+        'To load RoleName names in dropdown
+        ddlRole.DataSource = ds
+        'Assign field name and id to ddl
+        ddlRole.DataTextField = "RoleName"
+        ddlRole.DataValueField = "RoleID"
+        ddlRole.DataBind()
+    End Sub
+
+
 
     Protected Sub btnSubmit_Click1(sender As Object, e As EventArgs)
         If (FileUpload1.HasFile) Then
@@ -122,25 +123,25 @@ Public Class DoctorsRegistration
                     cmd1.Connection = con1
                     cmd1.CommandType = CommandType.Text
 
-                    cmd1.CommandText = "INSERT INTO tblDoctor (Firstname, Lastname, Role, Gender, DoB, Address, Phone_Number, NIC, Email_Address, Profile_Pic, Username, Password, Status) VALUES (@Firstname, @Lastname, @Role, @Gender, @DoB, @Address, @Phone_Number, @NIC, @Email_Address, @Profile_Pic, @Username, @Password, @Status) "
-                    cmd1.Parameters.AddWithValue("@Firstname", txtFname.Text)
-                    cmd1.Parameters.AddWithValue("@Lastname", txtLname.Text)
-                    cmd1.Parameters.AddWithValue("@Role", txtRole.Text)
-                    cmd1.Parameters.AddWithValue("@Gender", rbtngen.Text)
+                    cmd1.CommandText = "INSERT INTO tblDoctor (Firstname, Lastname, RoleID, Gender, DoB, Address, Phone_Number, NIC, Email_Address, Profile_Pic, Username, Password, Status) VALUES (@Firstname, @Lastname, @RoleID, @Gender, @DoB, @Address, @Phone_Number, @NIC, @Email_Address, @Profile_Pic, @Username, @Password, @Status) "
+                    cmd1.Parameters.AddWithValue("@Firstname", txtFname.Text.Trim())
+                    cmd1.Parameters.AddWithValue("@Lastname", txtLname.Text.Trim())
+                    cmd1.Parameters.AddWithValue("@RoleID", ddlRole.SelectedValue)
+                    cmd1.Parameters.AddWithValue("@Gender", rbtngen.Text.Trim())
                     cmd1.Parameters.AddWithValue("@DoB", strDate)
-                    cmd1.Parameters.AddWithValue("@Address", txtAddress.Text)
-                    cmd1.Parameters.AddWithValue("@Phone_Number", txtPhoneNum.Text)
-                    cmd1.Parameters.AddWithValue("@NIC", txtNic.Text)
-                    cmd1.Parameters.AddWithValue("@Email_Address", txtEmail.Text)
+                    cmd1.Parameters.AddWithValue("@Address", txtAddress.Text.Trim())
+                    cmd1.Parameters.AddWithValue("@Phone_Number", txtPhoneNum.Text.Trim())
+                    cmd1.Parameters.AddWithValue("@NIC", txtNic.Text.Trim())
+                    cmd1.Parameters.AddWithValue("@Email_Address", txtEmail.Text.Trim())
                     cmd1.Parameters.AddWithValue("@Profile_Pic", fileName)
-                    cmd1.Parameters.AddWithValue("@Username", txtUsername.Text)
-                    cmd1.Parameters.AddWithValue("@Password", Encrypt(txtPassword.Text))
+                    cmd1.Parameters.AddWithValue("@Username", txtUsername.Text.Trim())
+                    cmd1.Parameters.AddWithValue("@Password", Encrypt(txtPassword.Text.Trim()))
                     cmd1.Parameters.AddWithValue("@Status", 1)
                     con1.Open()
                     cmd1.ExecuteNonQuery()
                     'sendemail()
                     con1.Close()
-                    Response.Redirect("~/Login")
+                    Response.Redirect("~/DoctorLogin")
                 End If
             End If
         End If
@@ -149,7 +150,7 @@ Public Class DoctorsRegistration
     Protected Sub btnClear_Click1(sender As Object, e As EventArgs)
         txtFname.Text = ""
         txtLname.Text = ""
-        txtRole.Text = ""
+        ddlRole.SelectedIndex = 0
         rbtngen.Text = ""
         txtDob.Text = ""
         txtAddress.Text = ""

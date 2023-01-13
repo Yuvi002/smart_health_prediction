@@ -30,14 +30,13 @@
 
                     </div>
 
-                    <asp:Label ID="lblRole" runat="server" Text="Role:" AssociatedControlID="txtRole"></asp:Label>
-                    <div class="div_texbox">
-                        <asp:TextBox ID="txtRole" runat="server"
-                            CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtRole" runat="server" ErrorMessage="Role field is required"></asp:RequiredFieldValidator>
-
+                    <asp:Label ID="lblRole" runat="server" Text="Medical field:" AssociatedControlID="ddlRole"></asp:Label>
+                    <div class="input-group">
+                        <asp:DropDownList ID="ddlRole" CssClass="form-control" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlRole" runat="server" ErrorMessage="Medical field is required"></asp:RequiredFieldValidator><br /><br />
                     </div>
 
+                    <br />
 
                     <asp:Label ID="lblGender" runat="server" Font-Bold="true" Text="Gender:"></asp:Label>
                     <div class="div_texbox">

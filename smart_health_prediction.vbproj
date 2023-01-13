@@ -250,6 +250,7 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DoctorLogin.aspx" />
+    <Content Include="drmngbooking.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="DoctorsRegistration.aspx" />
@@ -385,6 +386,13 @@
     </Compile>
     <Compile Include="DoctorLogin.aspx.vb">
       <DependentUpon>DoctorLogin.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="drmngbooking.aspx.designer.vb">
+      <DependentUpon>drmngbooking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="drmngbooking.aspx.vb">
+      <DependentUpon>drmngbooking.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="E-Health System.Master.designer.vb">

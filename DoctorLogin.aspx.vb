@@ -82,7 +82,7 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
                 'create and save userid in a session variable
                 Session("docid") = myReader("Doctor_Id").ToString()
                 'redirect to the corresponding page
-                Response.Redirect("~/F12_DoctorBooking")
+                Response.Redirect("~/drmngbooking")
                 con.Close()
             End If
         Else

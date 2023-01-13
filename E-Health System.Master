@@ -82,6 +82,7 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
             </scripts>
         </asp:ScriptManager>
 
+
         <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
       <h1 class="logo me-auto"><a href="Dashboard.aspx">Medilab</a></h1>
@@ -101,12 +102,12 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
           
             <%--Registration Panel--%>
           <asp:Panel ID="hypregister" runat="server">
-                <li class="dropdown"><a href="#"><span>Registration</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a class="nav-link scrollto" href="#"><span>Registration</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="PatientRegistration.aspx">Patient Registration</a></li>
-              <li><a href="DoctorsRegistration.aspx" >Doctor Registration</a></li>
-              <li><a href="#PharmacistRegistration">Pharmacist Registration</a></li>
-              <li><a href="##TechnicianRegistration">Lab Technician Registration</a></li>
+              <li><a class="nav-link scrollto"  href="PatientRegistration.aspx">Patient Registration</a></li>
+              <li><a class="nav-link scrollto" href="DoctorsRegistration.aspx" >Doctor Registration</a></li>
+              <li><a class="nav-link scrollto" href="#PharmacistRegistration">Pharmacist Registration</a></li>
+              <li><a class="nav-link scrollto" href="##TechnicianRegistration">Lab Technician Registration</a></li>
             </ul>
           </li>
             </asp:Panel>
