@@ -2,40 +2,28 @@
 
 <%@ Register Assembly="DayPilot" Namespace="DayPilot.Web.Ui" TagPrefix="DayPilot" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   <%-- <style>
-        .div_textbox {
-
-            position:relative;
-            resize:both;
-            padding-right:300px;
-            padding-left:300px;
-        }
-    </style>--%>
+ 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="maincontent" runat="server">
 
    
 
 
-    <div class="container">
-
-       <%--  <asp:ScriptManager ID="ScriptManager1" runat="server">
-         
-    </asp:ScriptManager>--%>
-        <br />
-        <br />
-        <br />
+    <div class="border-dark" style="padding:5px; padding-top:2em;" >
+        <div style="padding:50px;"  >
         <h1 class="text-center">Book Your Appointment</h1>
-        <div id="leftside">
+        <div id="center">
             <fieldset>
-
                 <div class="form">
 
-                    <asp:Label ID="Label1" runat="server" Text="Choose a preferred date for your appointment: -" AssociatedControlID="txtappointdate"></asp:Label>
+                    <div class="div_textbox text-center">
+                        <asp:TextBox ID="txtApp_id" runat="server" Visible="false" CssClass="form-control"></asp:TextBox>
+                    </div>
 
+                    <asp:Label ID="Label1" runat="server" Text="Choose a preferred date for your appointment: -" AssociatedControlID="txtappointdate"></asp:Label>
                     
                     <br />
-
+                    
                     <div class="div_textbox text-center">
                         <asp:TextBox ID="txtappointdate" runat="server" TextMode="date" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="reqAppointDate" runat="server" ErrorMessage="Required" ControlToValidate="txtappointdate"></asp:RequiredFieldValidator>
@@ -54,18 +42,20 @@
                     <%-- Choose your Doctor Medical Field --%>
                     <asp:Label ID="lbldoctorfield" runat="server" AssociatedControlID="ddlDoctorField" Text="Choose your Doctor Medical Field"></asp:Label>
                     <div class="input-group">
-                        <asp:DropDownList ID="ddlDoctorField" runat="server"  ></asp:DropDownList>
+                        <asp:DropDownList ID="ddlDoctorField" OnSelectedIndexChanged="ddlDoctorField_SelectedIndexChanged" runat="server"  ></asp:DropDownList>
+                         <asp:RequiredFieldValidator ID="reqDoctorField" runat="server" ErrorMessage="Required" ControlToValidate="ddlDoctorField"></asp:RequiredFieldValidator>
                     </div>
-                    <%--OnSelectedIndexChanged="ddlDoctorField_SelectedIndexChanged1"--%>
+                   
                     <br />
 
-                    <%-- Choose your Doctor --%>
+                 
                     <asp:Label ID="lblDoctorName" runat="server" AssociatedControlID="ddldoctorname" Text="Choose your Doctor"></asp:Label>
                     <div class="input-group">
-                        <asp:DropDownList ID="ddldoctorname" runat="server" ></asp:DropDownList>
+                        <asp:DropDownList ID="ddldoctorname" OnSelectedIndexChanged="ddlDoctorField_SelectedIndexChanged" runat="server" ></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="reqdoctorname" runat="server" ErrorMessage="Required" ControlToValidate="ddldoctorname"></asp:RequiredFieldValidator>
                     </div>
 
-                     <%--OnSelectedIndexChanged="ddlDoctorField_SelectedIndexChanged1"--%>
+                   
 
                      <br />
 
@@ -73,27 +63,53 @@
                     <asp:Label ID="lbltech" runat="server" AssociatedControlID="ddllabtech" Text="Choose your Lab Technician"></asp:Label>
                     <div class="input-group">
                         <asp:DropDownList ID="ddllabtech" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="reqtech" runat="server" ErrorMessage="Required" ControlToValidate="ddllabtech"></asp:RequiredFieldValidator>
                     </div>
 
-                    <br />
+                   
                     <br />
 
                     <%-- Status --%>
-                    <asp:Label ID="Label2" runat="server" AssociatedControlID="ddllabtech" Text=""></asp:Label>
-
-                    <br />
-                    <br />
+                    <asp:Label ID="lblstatus" runat="server" AssociatedControlID="ddllabtech" Text=""></asp:Label>
 
                     <%-- Button Set --%>
-                    <asp:Button ID="btnBook" class="btn btn-outline-info" runat="server" Text="Book Appointment" />
+                    <div class="container">
+                    <asp:Button ID="btnBook" OnClick="btnBook_Click" class="btn btn-outline-info" runat="server" Text="Book Appointment" />
+                        <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" class="btn btn-outline-info" runat="server" Text="Update Appointment" />
+                        <asp:Button ID="btnDelete" OnClick="btnDelete_Click" class="btn btn-outline-info" runat="server" Text="Delete Appointment" />
+                        <asp:Button ID="btnCancel" OnClick="btnCancel_Click" class="btn btn-outline-info" runat="server" Text="Cancel" />
                     <asp:Button ID="btnClear" OnClick="btnClear_Click" class="btn btn-outline-danger" runat="server" Text="Clear" />
-
-                    <br />
+                    <asp:Label ID="lblMsg" runat="server" Text="Label"></asp:Label>
+                        
+                        </div>
                 </div>
             </fieldset>
+                </div>
         </div>
-         
-    </div>
+
+        <div style="padding:50px;">
+    <asp:GridView ID="gvsViewPatientBooking"  OnPageIndexChanging="gvsViewPatientBooking_PageIndexChanging" DataKeyNames="App_id" OnSelectedIndexChanged="gvsViewPatientBooking_SelectedIndexChanged" AutoGenerateColumns="false" ClientIDMode="Static" PageSize="3" AllowPaging="true" Width="800" runat="server">
+        <HeaderStyle BackColor="#eeeeee" ForeColor="White" Font-Bold="true"
+            Height="30" />
+      <AlternatingRowStyle BackColor="#f5f5f5" />
+     <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:LinkButton ID="lbtnSelect" runat="server"
+                        CssClass="btn btn-outline-info" CommandName="Select" Text="Select"></asp:LinkButton>
+                     </ItemTemplate>
+            </asp:TemplateField>
+         <asp:TemplateField  >
+             <ItemTemplate>
+                 <asp:Label ID="lblapptime" runat="server" Text='<%#Eval("App_time") %>' />
+                 <asp:Label ID="lbldateregistered" runat="server" Text='<%#Eval("App_dateregistered") %>' />
+             </ItemTemplate>
+         </asp:TemplateField>
+         </Columns>
+    </asp:GridView>
+            </div>
+     
+         </div>
     
      <script>
          $(document).ready(function () {

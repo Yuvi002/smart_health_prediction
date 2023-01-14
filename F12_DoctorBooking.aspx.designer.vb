@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class F12_DoctorBooking
 
     '''<summary>
+    '''txtApp_id control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtApp_id As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Label1 control.
     '''</summary>
     '''<remarks>
@@ -86,6 +95,15 @@ Partial Public Class F12_DoctorBooking
     Protected WithEvents ddlDoctorField As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''reqDoctorField control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents reqDoctorField As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''lblDoctorName control.
     '''</summary>
     '''<remarks>
@@ -102,6 +120,15 @@ Partial Public Class F12_DoctorBooking
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddldoctorname As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''reqdoctorname control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents reqdoctorname As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''lbltech control.
@@ -122,13 +149,22 @@ Partial Public Class F12_DoctorBooking
     Protected WithEvents ddllabtech As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Label2 control.
+    '''reqtech control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents reqtech As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''lblstatus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblstatus As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''btnBook control.
@@ -140,6 +176,33 @@ Partial Public Class F12_DoctorBooking
     Protected WithEvents btnBook As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''btnUpdate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnUpdate As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''btnDelete control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnDelete As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''btnCancel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''btnClear control.
     '''</summary>
     '''<remarks>
@@ -147,4 +210,22 @@ Partial Public Class F12_DoctorBooking
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnClear As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''lblMsg control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''gvsViewPatientBooking control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gvsViewPatientBooking As Global.System.Web.UI.WebControls.GridView
 End Class
