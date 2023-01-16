@@ -9,7 +9,8 @@ Imports System.IO
 Imports System.Security.Cryptography
 
 
-Public Class DoctorLogin
+
+Public Class RegBodyLogIn
     Inherits System.Web.UI.Page
 
     Private ReadOnly _conString As String
@@ -48,11 +49,11 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
         cmd.CommandType = CommandType.Text
         'searching for a record containing matching Username & Password with 
         'an active status
-        cmd.CommandText = "select * from tblDoctor where Username=@un and Password=@pass and Status=1"
+        cmd.CommandText = "select * from tblRegulatoringBody where Username=@unRB and Password=@passRB and status=1"
 
         'create two parameterized query for the above select statement
-        cmd.Parameters.AddWithValue("@un", Username)
-        cmd.Parameters.AddWithValue("@pass", Decrypt(Password))
+        cmd.Parameters.AddWithValue("@unRB", Username)
+        cmd.Parameters.AddWithValue("@passRB", Password)
 
         'use above variables and decrypt Password
         Dim myReader As SqlDataReader
@@ -78,37 +79,17 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
                 End If
 
                 'create and save Username in a session variable
-                Session("docname") = Username
+                Session("regname") = Username
                 'create and save userid in a session variable
-                Session("docid") = myReader("Doctor_Id").ToString()
+                Session("regID") = myReader("RB_ID").ToString()
                 'redirect to the corresponding page
-                Response.Redirect("~/drmngbooking")
+                Response.Redirect("~/RegBodyDashboard.aspx")
                 con.Close()
             End If
         Else
             'delete content of Password field 
             lblmsg.Text = "You are not registered or your account has been suspended!"
         End If
+
     End Sub
-
-    Private Function Decrypt(cipherText As String) As String
-        Dim EncryptionKey As String = "MAKV2SPBNI99212"
-        Dim clearBytes As Byte() = Encoding.Unicode.GetBytes(cipherText)
-        Using encryptor As Aes = Aes.Create()
-            Dim pdb As New Rfc2898DeriveBytes(EncryptionKey, New Byte() {&H49, &H76, &H61, &H6E, &H20, &H4D, &H65, &H64, &H76, &H65, &H64, &H65, &H76})
-            encryptor.Key = pdb.GetBytes(32)
-            encryptor.IV = pdb.GetBytes(16)
-            Using ms As New MemoryStream()
-                Using cs As New CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write)
-                    cs.Write(clearBytes, 0, clearBytes.Length)
-                    cs.Close()
-                End Using
-                cipherText = Convert.ToBase64String(ms.ToArray())
-            End Using
-        End Using
-        Return cipherText
-    End Function
-
-
-
 End Class

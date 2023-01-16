@@ -106,7 +106,6 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
             <ul>
               <li><a class="nav-link scrollto"  href="PatientRegistration.aspx">Patient Registration</a></li>
               <li><a class="nav-link scrollto" href="DoctorsRegistration.aspx" >Doctor Registration</a></li>
-              <li><a class="nav-link scrollto" href="#PharmacistRegistration">Pharmacist Registration</a></li>
               <li><a class="nav-link scrollto" href="##TechnicianRegistration">Lab Technician Registration</a></li>
             </ul>
           </li>
@@ -119,6 +118,7 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
             <ul>
               <li><a href="Login.aspx">Patient Login</a></li>
              <li><a href="DoctorLogin.aspx">Doctor Login</a></li>
+                <li><a href="RegBodyLogIn.aspx">Reg Body Login</a></li>
                 <li><a rel="modal:open" id="modopen" data-toggle="modal" href="#modadmin" >Admin</a></li>
                 </ul>
                 </li>
@@ -133,6 +133,35 @@ see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
               </li>
             </ul>
           </li>
+            </asp:Panel>
+
+              <%-- Menu To view RegBody Panel --%>
+            <asp:Panel ID="pnlRegBody" Visible="false" runat="server">
+                <li class="dropdown"><a href="#"><span>Manage Categories</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto"  href="RegBodyDashboard.aspx">Symptoms Category</a></li>
+              <li><a class="nav-link scrollto" href="TimeDashboard.aspx" >Consultation Time</a></li>
+              <li><a class="nav-link scrollto" href="MedicalCategory.aspx">Doctor Medical Category</a></li>
+            </ul>
+          </li>
+            </asp:Panel>
+
+             <%-- Menu To view Admin Panel --%>
+             <asp:Panel ID="pnlAdmin" Visible="false" runat="server">
+                <li class="dropdown"><a href="#"><span>Manage Patients</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto"  href="BlockPatients.aspx">Block Patient</a></li>
+              <li><a class="nav-link scrollto" href="UnblockPatients.aspx" >Unblock Patient</a></li>
+            </ul>
+          </li>
+
+                 <li class="dropdown"><a href="#"><span>Manage Doctors</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto"  href="BlockDoctors.aspx">Block Doctors</a></li>
+              <li><a class="nav-link scrollto" href="UnblockDoctors.aspx" >Unblock Doctors</a></li>
+            </ul>
+          </li>
+
             </asp:Panel>
 
         </ul>

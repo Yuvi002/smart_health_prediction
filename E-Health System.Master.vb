@@ -25,6 +25,7 @@ Public Class E_Health_System
             lbllgged.Text = "Welcome " + Session("admUsername")
             lbllgged.CssClass = "btn btn-outline-success text-black"
             btnlgout.Visible = True
+            pnlAdmin.Visible = True
             'dropdown06.Visible = False
             'pnlmanage.Visible = True
             'pnlmanagemov.Style.Add("visibility", "hidden")
@@ -43,6 +44,7 @@ Public Class E_Health_System
             lbllgged.Text = "Welcome " + Session("sname")
             lbllgged.CssClass = "btn btn-outline-success text-black"
             btnlgout.Visible = True
+            pnlAdmin.Visible = False
             'dropdown06.Visible = False
             'pnlmanage.Visible = True
             'pnlmanagemov.Style.Add("visibility", "hidden")
@@ -65,8 +67,28 @@ Public Class E_Health_System
             lbllgged.Text = "Welcome " + Session("docname")
             lbllgged.CssClass = "btn btn-outline-success text-black"
             btnlgout.Visible = True
+            pnlRegBody.Visible = False
             'dropdown06.Visible = False
-            'pnlmanage.Visible = True
+
+            'pnlmanagemov.Style.Add("visibility", "hidden")
+            'Page.Controls.Remove(pnlmanagemov)
+            'pnlpatient.Style.Add("visibility", "hidden")
+            'Page.Controls.Remove(pnlpatient)
+            pnllogin.Style.Add("visibility", "hidden")
+            Page.Controls.Remove(pnllogin)
+            'docid
+        End If
+
+        'Reggulatory Body Session
+        If (Not IsNothing(Session("regName"))) Then
+            hypregister.Visible = False
+            lgout.CssClass = "nav navbar-nav navbar-right"
+            lbllgged.CssClass = "btn btn-outline-success text-white"
+            lbllgged.Text = "Welcome " + Session("regName")
+            lbllgged.CssClass = "btn btn-outline-success text-black"
+            btnlgout.Visible = True
+            'dropdown06.Visible = False
+            pnlRegBody.Visible = True
             'pnlmanagemov.Style.Add("visibility", "hidden")
             'Page.Controls.Remove(pnlmanagemov)
             'pnlpatient.Style.Add("visibility", "hidden")
@@ -141,8 +163,10 @@ Public Class E_Health_System
         logout()
     End Sub
 
+
+
     Private Sub logout()
-        If (Not IsNothing(Session("admUsername"))) Or (Not IsNothing(Session("docname"))) Or (Not IsNothing(Session("sname"))) Then
+        If (Not IsNothing(Session("admUsername"))) Or (Not IsNothing(Session("docname"))) Or (Not IsNothing(Session("sname"))) Or (Not IsNothing(Session("regName"))) Then
             'Remove all session
             Session.RemoveAll()
             'Destroy all Session objects

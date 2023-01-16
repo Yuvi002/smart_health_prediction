@@ -11,140 +11,113 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class E_Health_System
+Partial Public Class RegBodyDashboard
 
     '''<summary>
-    '''head control.
+    '''lblMsg control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents head As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''form1 control.
+    '''lbl control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents lbl As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''lgout control.
+    '''lblCategId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lgout As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents lblCategId As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''lbllgged control.
+    '''txtCategoryId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lbllgged As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents txtCategoryId As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''btnlgout control.
+    '''lblCategName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnlgout As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lblCategName As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''hypregister control.
+    '''txtCategoryName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents hypregister As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents txtCategoryName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''pnllogin control.
+    '''rfvCategoryName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnllogin As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents rfvCategoryName As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''pnlpatient control.
+    '''btnInsert control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlpatient As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents btnInsert As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''hyuser control.
+    '''btnUpdate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents hyuser As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents btnUpdate As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''pnlRegBody control.
+    '''btnDelete control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlRegBody As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents btnDelete As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''pnlAdmin control.
+    '''btnCancel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlAdmin As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''maincontent control.
+    '''gvsCategory control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents maincontent As Global.System.Web.UI.WebControls.ContentPlaceHolder
-
-    '''<summary>
-    '''ucadminlogin control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ucadminlogin As Global.smart_health_prediction.LoginCrel
-
-    '''<summary>
-    '''lblmsg control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblmsg As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''btnLogin control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnLogin As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents gvsCategory As Global.System.Web.UI.WebControls.GridView
 End Class

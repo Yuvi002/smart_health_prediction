@@ -2,6 +2,17 @@
 
 <%@ Register Assembly="DayPilot" Namespace="DayPilot.Web.Ui" TagPrefix="DayPilot" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+     <style>
+        #gvsViewPatientBooking {
+            width: 100%;
+        }
+
+        th {
+            background: #494e5d;
+            color: chartreuse;
+        }
+    </style>
  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="maincontent" runat="server">
@@ -75,9 +86,7 @@
                     <%-- Button Set --%>
                     <div class="container">
                     <asp:Button ID="btnBook" OnClick="btnBook_Click" class="btn btn-outline-info" runat="server" Text="Book Appointment" />
-                        <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" class="btn btn-outline-info" runat="server" Text="Update Appointment" />
-                        <asp:Button ID="btnDelete" OnClick="btnDelete_Click" class="btn btn-outline-info" runat="server" Text="Delete Appointment" />
-                        <asp:Button ID="btnCancel" OnClick="btnCancel_Click" class="btn btn-outline-info" runat="server" Text="Cancel" />
+                      
                     <asp:Button ID="btnClear" OnClick="btnClear_Click" class="btn btn-outline-danger" runat="server" Text="Clear" />
                     <asp:Label ID="lblMsg" runat="server" Text="Label"></asp:Label>
                         
@@ -88,23 +97,14 @@
         </div>
 
         <div style="padding:50px;">
-    <asp:GridView ID="gvsViewPatientBooking"  OnPageIndexChanging="gvsViewPatientBooking_PageIndexChanging" DataKeyNames="App_id" OnSelectedIndexChanged="gvsViewPatientBooking_SelectedIndexChanged" AutoGenerateColumns="false" ClientIDMode="Static" PageSize="3" AllowPaging="true" Width="800" runat="server">
+    <asp:GridView ID="gvsViewPatientBooking" OnPreRender="gvsViewPatientBooking_PreRender" CssClass="table table-striped table-bordered"   OnPageIndexChanging="gvsViewPatientBooking_PageIndexChanging" DataKeyNames="App_id" OnSelectedIndexChanged="gvsViewPatientBooking_SelectedIndexChanged" AutoGenerateColumns="false" ClientIDMode="Static" PageSize="3" AllowPaging="true" Width="800" runat="server">
         <HeaderStyle BackColor="#eeeeee" ForeColor="White" Font-Bold="true"
             Height="30" />
       <AlternatingRowStyle BackColor="#f5f5f5" />
      <Columns>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:LinkButton ID="lbtnSelect" runat="server"
-                        CssClass="btn btn-outline-info" CommandName="Select" Text="Select"></asp:LinkButton>
-                     </ItemTemplate>
-            </asp:TemplateField>
-         <asp:TemplateField  >
-             <ItemTemplate>
-                 <asp:Label ID="lblapptime" runat="server" Text='<%#Eval("App_time") %>' />
-                 <asp:Label ID="lbldateregistered" runat="server" Text='<%#Eval("App_dateregistered") %>' />
-             </ItemTemplate>
-         </asp:TemplateField>
+        <asp:BoundField DataField="App_dateregistered" HeaderText="Appointment Date" />
+            <asp:BoundField DataField="App_time" HeaderText="Appointment Time" />
+         <asp:BoundField DataField="App_status" HeaderText="Appointment Status" />
          </Columns>
     </asp:GridView>
             </div>

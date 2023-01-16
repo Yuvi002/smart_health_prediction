@@ -271,95 +271,10 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
         con.Close()
         btnBook.Visible = False
         btnClear.Visible = False
-        btnUpdate.Visible = True
-        btnDelete.Visible = True
-        btnCancel.Visible = True
+
     End Sub
 
-    Protected Sub btnUpdate_Click(sender As Object, e As EventArgs)
-        'check whether the moviename textbox is empty
-        If String.IsNullOrEmpty(txtappointdate.Text.Trim()) Then
-            lblMsg.Text = "Please select record to update"
-            lblMsg.ForeColor = System.Drawing.Color.Red
-            Return
-        End If
 
-        Dim IsUpdated As Boolean = False
-
-        'get the movieid from the textbox
-        Dim App_id As Integer = Convert.ToString(txtApp_id.Text)
-        Dim con As New SqlConnection(_conString)
-        Dim cmd As New SqlCommand()
-        cmd.Connection = con
-        cmd.CommandType = CommandType.Text
-        'Add UPDATE statement to update the movie
-        cmd.CommandText = "update tblAppointment set App_dateregistered=@App_dateregistered, App_time=@App_time, RoleID=@RoleID, Doctor_Id=@Doctor_Id, lbtech_Id=@lbtech_Id, App_status=@App_status where App_id=@App_id"
-        'Create the parameterized queries
-        cmd.Parameters.AddWithValue("@App_id", txtApp_id.Text.Trim())
-        cmd.Parameters.AddWithValue("@App_dateregistered", txtappointdate.Text.Trim())
-        cmd.Parameters.AddWithValue("@App_dateregistered", ddlconsultationtime.SelectedValue)
-        cmd.Parameters.AddWithValue("@RoleID", ddlDoctorField.SelectedValue)
-        cmd.Parameters.AddWithValue("@Doctor_Id", ddldoctorname.SelectedValue)
-        cmd.Parameters.AddWithValue("@lbtech_Id", ddllabtech.SelectedValue)
-        cmd.Parameters.AddWithValue("@App_status", 0)
-
-        con.Open()
-        'use Command method to execute UPDATE statement and return
-        'boolean if number of records UPDATED is greater than zero
-
-        IsUpdated = cmd.ExecuteNonQuery() > 0
-
-        con.Close()
-
-
-        If (IsUpdated) Then
-            lblMsg.Text = txtappointdate.Text + " booking updated successfully!"
-            lblMsg.ForeColor = System.Drawing.Color.Green
-            'Refresh the GridView by calling the BindMovieData()
-            BindAppointmentData()
-        Else
-            lblMsg.Text = "Error while updating Booking " + txtappointdate.Text
-            lblMsg.ForeColor = System.Drawing.Color.Red
-        End If
-        ResetAll()
-    End Sub
-
-    Protected Sub btnDelete_Click(sender As Object, e As EventArgs)
-        'check whether the txtmoviename textbox is empty
-        If String.IsNullOrEmpty(txtappointdate.Text.Trim()) Then
-            lblMsg.Text = "Please select record to delete"
-            lblMsg.ForeColor = System.Drawing.Color.Red
-            Return
-        End If
-        Dim IsDeleted As Boolean = False
-        'get the movieid from the textbox
-        Dim App_id As Integer = Convert.ToInt64(txtApp_id.Text)
-        Dim con As New SqlConnection(_conString)
-        Dim cmd As New SqlCommand()
-        cmd.Connection = con
-        cmd.CommandType = CommandType.Text
-        'Add DELETE statement to delete the selected movie
-        cmd.CommandText = "delete from tblAppointment where App_id = @App_id "
-        'Create a parametererized query
-        cmd.Parameters.AddWithValue("@@App_id", txtApp_id.Text.Trim())
-        cmd.Connection = con
-        con.Open()
-        'use Command method to execute DELETE statement and return
-        'Boolean True if number of records DELETED is greater than zero
-        IsDeleted = cmd.ExecuteNonQuery() > 0
-        con.Close()
-        If (IsDeleted) Then
-
-            lblMsg.Text = txtappointdate.Text + " Booking deleted successfully!"
-            lblMsg.ForeColor = System.Drawing.Color.Green
-            'Refresh the GridView by calling the BindMovieData()
-            BindAppointmentData()
-        Else
-            lblMsg.Text = "Error while deleting booking " + txtappointdate.Text
-            lblMsg.ForeColor = System.Drawing.Color.Red
-        End If
-        ResetAll()
-    End Sub
 
     Protected Sub btnCancel_Click(sender As Object, e As EventArgs)
         ResetAll()
@@ -367,9 +282,6 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
 
     Private Sub ResetAll()
         btnBook.Visible = True
-        btnUpdate.Visible = False
-        btnCancel.Visible = False
-        btnDelete.Visible = False
         txtappointdate.Text = ""
         ddlconsultationtime.SelectedIndex = 0
         ddlDoctorField.SelectedIndex = 0
@@ -377,36 +289,13 @@ WebConfigurationManager.ConnectionStrings("MedicalCS").ConnectionString
         ddllabtech.SelectedIndex = 0
     End Sub
 
-
-    'Protected Sub ddlDoctorField_SelectedIndexChanged1(sender As Object, e As EventArgs)
-    '    Me.BindDDL()
-    'End Sub
-
-    'Private Sub BindDDL()
-    '    Dim Doctor_Id As String = ddldoctorname.SelectedValue
-    '    Dim RoleID As String = ddlDoctorField.SelectedValue
-    '    Dim con As New SqlConnection(_conString)
-    '    Dim cmd As New SqlCommand()
-    '    cmd.Connection = con
-    '    cmd.CommandType = CommandType.Text
-    '    Dim sqlParamRole As String = ""
-    '    Dim sqlParamDoctor As String = ""
-    '    If (Not IsNothing(ddldoctorname.DataTextField()) Then
-    '        sqlParamDoctor = "and Firstname like '%' + dname + '%'"
-    '    End If
-    '    If (RoleID <> "-1") Then
-    '        sqlParamRole = "and tblDoctor.RoleID = @RoleID"
-    '    End If
-    '    cmd.DataTextField = "Select RoleID, RoleName FROM tblDoctorRole WHERE RoleName LIKE '%' + @RoleName + '%' " + sqlParamRole
-    '    cmd.DataTextField = "Select Doctor_Id, Firstname, Lastname, RoleID, Gender, DoB, Address, Phone_Number, NIC, Email_Address, Profile_Pic, Username, Password FROM tblDoctor WHERE Status = 1 and WHERE Firstname LIKE '%' + @Firstname + '%' " + sqlParamDoctor
-    '    cmd.Parameters.AddWithValue("@RoleName", RoleID)
-    '    cmd.Parameters.AddWithValue("@pid", Convert.ToInt32(Session("docid")))
-    '    cmd.Parameters.AddWithValue("@Doctor_Id", Doctor_Id)
-    '    Dim dt As New DataTable()
-    '    Dim da As New SqlDataAdapter(cmd)
-    '    da.Fill(dt)
-    'End Sub
-
-
+    Protected Sub gvsViewPatientBooking_PreRender(sender As Object, e As EventArgs)
+        If (gvsViewPatientBooking.Rows.Count > 0) Then
+            'This replaces <td> with <th> and adds the scope attribute
+            gvsViewPatientBooking.UseAccessibleHeader = True
+            'This will add the <thead> and <tbody> elements
+            gvsViewPatientBooking.HeaderRow.TableSection = TableRowSection.TableHeader
+        End If
+    End Sub
 
 End Class

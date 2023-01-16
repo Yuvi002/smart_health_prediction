@@ -237,6 +237,8 @@
     <Content Include="assets\vendor\remixicon\remixicon.symbol.svg" />
     <Content Include="assets\vendor\swiper\swiper-bundle.min.css" />
     <Content Include="assets\vendor\swiper\swiper-bundle.min.js" />
+    <Content Include="BlockDoctors.aspx" />
+    <Content Include="BlockPatients.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -310,7 +312,10 @@
     <Content Include="E-Health System.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="LoginCrel.ascx" />
+    <Content Include="MedicalCategory.aspx" />
     <Content Include="PatientRegistration.aspx" />
+    <Content Include="RegBodyDashboard.aspx" />
+    <Content Include="RegBodyLogIn.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -347,6 +352,9 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="TimeDashboard.aspx" />
+    <Content Include="UnblockDoctors.aspx" />
+    <Content Include="UnblockPatients.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
@@ -358,6 +366,20 @@
     </Compile>
     <Compile Include="About.aspx.vb">
       <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="BlockDoctors.aspx.designer.vb">
+      <DependentUpon>BlockDoctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BlockDoctors.aspx.vb">
+      <DependentUpon>BlockDoctors.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="BlockPatients.aspx.designer.vb">
+      <DependentUpon>BlockPatients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BlockPatients.aspx.vb">
+      <DependentUpon>BlockPatients.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Contact.aspx.designer.vb">
@@ -433,6 +455,13 @@
       <DependentUpon>LoginCrel.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="MedicalCategory.aspx.designer.vb">
+      <DependentUpon>MedicalCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalCategory.aspx.vb">
+      <DependentUpon>MedicalCategory.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -459,12 +488,47 @@
       <DependentUpon>PatientRegistration.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="RegBodyDashboard.aspx.designer.vb">
+      <DependentUpon>RegBodyDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegBodyDashboard.aspx.vb">
+      <DependentUpon>RegBodyDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RegBodyLogIn.aspx.designer.vb">
+      <DependentUpon>RegBodyLogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegBodyLogIn.aspx.vb">
+      <DependentUpon>RegBodyLogIn.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.vb">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimeDashboard.aspx.designer.vb">
+      <DependentUpon>TimeDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimeDashboard.aspx.vb">
+      <DependentUpon>TimeDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UnblockDoctors.aspx.designer.vb">
+      <DependentUpon>UnblockDoctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UnblockDoctors.aspx.vb">
+      <DependentUpon>UnblockDoctors.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UnblockPatients.aspx.designer.vb">
+      <DependentUpon>UnblockPatients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UnblockPatients.aspx.vb">
+      <DependentUpon>UnblockPatients.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.vb">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
